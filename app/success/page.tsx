@@ -2,5 +2,30 @@ import Link from 'next/link';
 import { CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function SuccessPage() {
-  return <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8"><div className="rounded-[32px] border border-emerald-200 bg-emerald-50 p-8 text-center shadow-soft"><div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 text-white"><CheckCircle2 className="h-10 w-10" /></div><h1 className="mt-8 text-4xl font-bold text-slate-900">Payment received</h1><p className="mt-4 text-lg text-slate-700">Stripe has returned you to Pine & Pixel. Your order is being confirmed securely by webhook.</p><div className="mx-auto mt-6 flex max-w-md items-start gap-3 rounded-2xl border border-emerald-200 bg-white p-4 text-left text-sm text-slate-700"><ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" /><span>Digital delivery should only be enabled after your webhook confirms the payment. Never trust the browser redirect alone.</span></div><div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"><Link href="/products" className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-700"><Sparkles className="h-4 w-4" />Browse more designs</Link></div></div></div>;
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="rounded-[32px] border border-emerald-200 bg-emerald-50 p-8 text-center shadow-soft">
+        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 text-white">
+          <CheckCircle2 className="h-10 w-10" />
+        </div>
+
+        <h1 className="mt-8 text-4xl font-bold text-slate-900">Payment received</h1>
+        <p className="mt-4 text-lg text-slate-700">
+          Stripe has returned you to Pine & Pixel. Your order is being confirmed securely by webhook.
+        </p>
+
+        <div className="mx-auto mt-6 flex max-w-md items-start gap-3 rounded-2xl border border-emerald-200 bg-white p-4 text-left text-sm text-slate-700">
+          <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+          <span>Digital delivery should only be enabled after your webhook confirms the payment. Never trust the browser redirect alone.</span>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link href="/products" className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
+            <Sparkles className="h-4 w-4" />
+            Browse more designs
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }

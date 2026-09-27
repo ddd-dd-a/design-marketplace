@@ -14,33 +14,24 @@ export default function HomePage() {
         <div className="absolute right-10 top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-sm text-violet-200">
                 <Sparkles className="h-4 w-4" />
                 Built to sell premium digital design assets
               </div>
-
               <h1 className="max-w-xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 Sell design packs that people actually buy.
               </h1>
-
               <p className="mt-6 max-w-xl text-lg text-slate-300">
-                Pine & Pixel is a modern marketplace for creators selling templates, mockups,
-                branding kits, and digital assets with licensing built in.
+                Pine & Pixel helps creators sell templates, mockups, branding kits, and premium digital assets in a polished marketplace experience.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/products"
-                  className="inline-flex items-center gap-2 rounded-full bg-violet-500 px-5 py-3 font-medium text-white transition hover:bg-violet-400"
-                >
+                <Link href="/products" className="inline-flex items-center gap-2 rounded-full bg-violet-500 px-5 py-3 font-medium text-white transition hover:bg-violet-400">
                   Explore designs <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link
-                  href="/sell"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-5 py-3 font-medium text-slate-100 transition hover:border-slate-500"
-                >
+                <Link href="/sell" className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-5 py-3 font-medium text-slate-100 transition hover:border-slate-500">
                   Start selling
                 </Link>
               </div>

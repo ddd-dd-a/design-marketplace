@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'Pine & Pixel | Premium Design Marketplace',
-  description: 'Sell and buy premium digital design assets and templates.',
+  description: 'Premium digital design marketplace for creators and businesses.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

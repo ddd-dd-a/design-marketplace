@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import { Search, SlidersHorizontal } from 'lucide-react';
 import { productCategories, products } from '@/lib/data';
 import { ProductCard } from '@/components/product-card';
-import { Search, SlidersHorizontal } from 'lucide-react';
 
 export default function ProductsPage() {
   return (

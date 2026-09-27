@@ -3,8 +3,8 @@ import { products } from '@/lib/data';
 import { getStripe } from '@/lib/stripe';
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  const productId = Number(body.productId ?? body.id ?? 1);
+  const body = await request.json().catch(() => ({ productId: 1 }));
+  const productId = Number(body.productId ?? 1);
   const product = products.find((item) => item.id === productId) ?? products[0];
 
   const stripe = getStripe();
@@ -31,7 +31,10 @@ export async function POST(request: Request) {
     customer_creation: 'always',
     success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/products/${product.slug}`,
-    metadata: { productId: String(product.id), license: 'commercial' },
+    metadata: {
+      productId: String(product.id),
+      license: 'commercial',
+    },
   });
 
   return NextResponse.json({ url: session.url });
