@@ -1,84 +1,42 @@
-import type { Product } from './types';
+# Pine & Pixel — production-ready marketplace starter
 
-export const productCategories = ['Branding', 'UI Kits', 'Templates', 'Mockups', 'Social', 'Printables'];
+A Next.js 14 digital design marketplace with a polished storefront, seller dashboard, Supabase-ready persistence, Stripe Checkout, webhook order capture, and a downloadable source archive.
 
-export const products: Product[] = [
-  {
-    id: 1,
-    slug: 'brand-launch-kit',
-    name: 'Brand Launch Kit',
-    category: 'Branding',
-    creator: 'Luna Studio',
-    price: 39,
-    originalPrice: 79,
-    rating: 4.9,
-    description: 'A complete brand identity system for startups and small businesses, featuring logos, typography, color systems, and social templates.',
-    tags: ['brand kit', 'logo', 'packaging', 'social'],
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 2,
-    slug: 'launchpad-ui-kit',
-    name: 'LaunchPad UI Kit',
-    category: 'UI Kits',
-    creator: 'North Pixel',
-    price: 59,
-    originalPrice: 99,
-    rating: 5.0,
-    description: 'High-converting SaaS landing page components and interface elements built for modern product teams.',
-    tags: ['saas', 'figma', 'landing page', 'ui'],
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 3,
-    slug: 'social-growth-pack',
-    name: 'Social Growth Pack',
-    category: 'Templates',
-    creator: 'Margot Labs',
-    price: 29,
-    originalPrice: 49,
-    rating: 4.8,
-    description: 'Editable templates for Instagram, TikTok, and LinkedIn content designed to increase engagement and brand consistency.',
-    tags: ['social', 'content', 'marketing', 'reels'],
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 4,
-    slug: 'minimal-product-mockups',
-    name: 'Minimal Product Mockups',
-    category: 'Mockups',
-    creator: 'Aster House',
-    price: 34,
-    originalPrice: 69,
-    rating: 4.7,
-    description: 'Photorealistic, light-filled mockup scenes for digital products, packaging, and print-based marketing campaigns.',
-    tags: ['mockup', 'packaging', 'product', 'studio'],
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 5,
-    slug: 'creator-content-system',
-    name: 'Creator Content System',
-    category: 'Social',
-    creator: 'Harlow Studio',
-    price: 26,
-    originalPrice: 48,
-    rating: 4.9,
-    description: 'A polished bundle of content templates, hooks, brand presets, thumbnails, and post layouts for creators.',
-    tags: ['creator', 'content', 'reels', 'workflow'],
-    image: 'https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    id: 6,
-    slug: 'printable-workshop-kit',
-    name: 'Printable Workshop Kit',
-    category: 'Printables',
-    creator: 'Moss Avenue',
-    price: 24,
-    originalPrice: 42,
-    rating: 4.8,
-    description: 'Planner, worksheet, and journal templates for coaches, consultants, and service businesses.',
-    tags: ['planner', 'prints', 'workshop', 'template'],
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
-  },
-];
+## Download
+Use GitHub's **Code → Download ZIP**, or download the repository directly:
+
+https://github.com/ddd-dd-a/design-marketplace/archive/refs/heads/main.zip
+
+## Run locally
+
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Open http://localhost:3000. The storefront works with demo data immediately.
+
+## Enable real payments and orders
+
+1. Create a Supabase project and run `supabase/schema.sql` in its SQL editor.
+2. Copy the project URL, anon key, and service-role key into `.env.local`.
+3. Create a Stripe account and add a test secret key.
+4. Set `NEXT_PUBLIC_APP_URL` to your deployed URL.
+5. Forward Stripe events locally with `stripe listen --forward-to localhost:3000/api/stripe/webhook` and copy the webhook secret.
+6. Deploy to Vercel or another Node-compatible host and add the same environment variables.
+
+Never expose `SUPABASE_SERVICE_ROLE_KEY` or `STRIPE_SECRET_KEY` in client-side code. The checkout route creates a hosted Stripe Checkout session; the webhook records paid orders in Supabase.
+
+## Main routes
+
+- `/` storefront landing page
+- `/products` catalog
+- `/products/[slug]` product detail
+- `/sell` seller listing form UI
+- `/dashboard` seller metrics UI
+- `/api/products` product API with Supabase fallback
+- `/api/checkout` Stripe Checkout session creation
+- `/api/stripe/webhook` verified Stripe payment webhook
+
+This starter does not include real authentication, protected seller uploads, or automated file delivery yet; those require connecting the Supabase Auth/Storage flows and adding your business policies.
